@@ -58,7 +58,7 @@ public class ESSPDFClientToolTest {
     }
     
     @Test
-	public void testPdfSign() throws Exception {//PDF签章测试
+	public void testPdfSign() throws Exception {//PDF单规则签章
 		System.out.println("*******************");
 		byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testPdfFilePath));//pdf字节数组
 		String ruleNum = "F34848AA7BA92";//签章规则编号
@@ -74,7 +74,7 @@ public class ESSPDFClientToolTest {
 	}
     
     @Test
-    public void testPdfSign_sealNum_policyNum() throws Exception {//PDF签章测试,自定义服务印章编号、签名策略编号
+    public void testPdfSign_sealNum_policyNum() throws Exception {//PDF组合规则签章,自定义服务印章编号、签名策略编号
         System.out.println("*******************");
         byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testPdfFilePath));//pdf字节数组
         String ruleNum = "F34848AA7BA92";//签章规则编号
@@ -89,13 +89,15 @@ public class ESSPDFClientToolTest {
     }
 
     @Test
-    public void testPdfSignList() throws Exception {//PDF批量签章测试
+    public void testPdfSignList() throws Exception {//PDF多规则签章
         byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testPdfFilePath));//pdf字节数组
         List<String> ruleNumList = new ArrayList<String>();//
-        String ruleNum = "53582C51C506201E";//签章规则编号列表
+        String ruleNum = "F34848AA7BA92";//签章规则编号列表
+        String ruleNum2 = "5458FB5D47371229";//签章规则编号列表
+        String ruleNum3 = "62F887B9A2D55AE1";//签章规则编号列表
         ruleNumList.add(ruleNum);
-//        ruleNum = "13FCB33BCB77375F";//签章规则编号列表
-//        ruleNumList.add(ruleNum);
+        ruleNumList.add(ruleNum2);
+        ruleNumList.add(ruleNum3);
         long begin = System.currentTimeMillis();
         ChannelMessage message = anySignClientTool.pdfSign(ruleNumList, pdfBty);
         long end = System.currentTimeMillis();
@@ -108,12 +110,15 @@ public class ESSPDFClientToolTest {
     }
 
     @Test
-    public void testPdfSpeedSign() throws Exception {//PDF高速签名
-//        byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testPdfFilePath));//pdf字节数组
-        byte[] pdfBty = ClientUtil.readFileToByteArray(new File("E:\\pdf\\out\\test900Sign.pdf"));//pdf字节数组
+    public void testPdfSpeedSign() throws Exception {//PDF高速签章
+        byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testPdfFilePath));//pdf字节数组
         List<String> ruleNumList = new ArrayList<String>();//
-        String ruleNum = "3AC11DD95F57E1E";//签章规则编号列表
+        String ruleNum = "F34848AA7BA92";//签章规则编号列表
+        String ruleNum2 = "5458FB5D47371229";//签章规则编号列表
+        String ruleNum3 = "62F887B9A2D55AE1";//签章规则编号列表
         ruleNumList.add(ruleNum);
+        ruleNumList.add(ruleNum2);
+        ruleNumList.add(ruleNum3);
         long begin = System.currentTimeMillis();
         ChannelMessage message = anySignClientTool.pdfSpeedSign(ruleNumList, pdfBty);
         long end = System.currentTimeMillis();
@@ -127,12 +132,9 @@ public class ESSPDFClientToolTest {
 
     @Test
     public void testPdfVerify() throws Exception {//PDF验签测试
-//        byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testSignedPdfFilePath));//pdf字节数组
-        byte[] pdfBty = ClientUtil.readFileToByteArray(new File(
-                "C:\\Users\\wutengfei\\Desktop\\ESSPDF_api_docs\\untitled\\out\\" +
-                        "production\\untitled\\out\\signedPDF.pdf"));//pdf字节数组
+        byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testSignedPdfFilePath));//pdf字节数组
         String orgCode = "123456";//机构代码
-        ChannelMessage message = anySignClientTool.pdfVerify(orgCode, pdfBty);
+        ChannelMessage message = anySignClientTool.pdfVerify( pdfBty);
         System.out.println("状态码：" + message.getStatusCode());
         System.out.println("状态信息：" + message.getStatusInfo());
         System.out.println("验证结果：" + new String(message.getBody(), "UTF-8"));
@@ -539,7 +541,7 @@ public class ESSPDFClientToolTest {
     public void testPdfMultiPageSign() throws Exception {
         System.out.println("*****************");
         byte[] pdfBty = ClientUtil.readFileToByteArray(new File(testPdfFilePath));
-        String ruleNum = "4B680B0282A9B36";
+        String ruleNum = "F34848AA7BA92";
         ChannelMessage message = anySignClientTool.pdfMultiPageSign(ruleNum, pdfBty, "");
         System.out.println("状态码：" + message.getStatusCode());
         System.out.println("状态信息：" + message.getStatusInfo());
