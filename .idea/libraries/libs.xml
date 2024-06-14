@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/esspdf-client-1.8.7-RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-codec-1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-core-2.14.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/anysign-components-bean-1.8.7-RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-module-jaxb-annotations-2.14.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-annotations-2.14.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jakarta.xml.bind-api-2.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jakarta.activation-api-1.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-databind-2.14.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/fastjson-1.2.83.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gson-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/anysign-components-1.8.7-RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-jaxrs-json-provider-2.14.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-io-2.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
